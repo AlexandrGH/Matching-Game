@@ -33,8 +33,7 @@ function start(){
         for (let x = 0; x < mapLenX; x++) {
             let card = document.createElement('div')
             card.id = cardID(y, x)
-            card.classList.add('card', map[y][x])
-            // card.classList.add('card', map[y][x], 'hide')
+            card.classList.add('card', map[y][x], 'hide')
             card.onclick = function(){
                 if(lock === false){                    
                     openCard(y, x)
@@ -43,11 +42,6 @@ function start(){
             raw.appendChild(card)
         }    
         document.querySelector('.container').appendChild(raw)
-        let hide = document.getElementsByClassName('card')
-        for (let index = 0; index < hide.length; index++) {
-            const element = hide[index];
-            element.classList.add('hide')
-        }
     }
 }
 let currentCard = []
@@ -107,3 +101,30 @@ function win(){
         document.body.appendChild(restart)
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const images = new Array();
+
+    function preloadImages(...images) {
+        images.forEach((image, i) => {
+            image = new Image();
+            image.src = preloadImages.arguments[i];
+        });
+    };
+
+    // Предварительная загрузка нужных картинок 
+    preloadImages(
+		'img/apple-2.svg',
+		'img/apple-3.svg',
+		'img/apple.svg',
+		'img/banana.svg',
+		'img/cherry.svg',
+		'img/grapefruit.svg',
+		'img/grapes.svg',
+		'img/lemon.svg',
+		'img/melon.svg',
+		'img/orange.svg',
+		'img/strawberry.svg',
+		'img/pear.svg',
+    );
+});
