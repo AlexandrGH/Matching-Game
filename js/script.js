@@ -33,7 +33,8 @@ function start(){
         for (let x = 0; x < mapLenX; x++) {
             let card = document.createElement('div')
             card.id = cardID(y, x)
-            card.classList.add('card', map[y][x], 'hide')
+            card.classList.add('card', map[y][x])
+            // card.classList.add('card', map[y][x], 'hide')
             card.onclick = function(){
                 if(lock === false){                    
                     openCard(y, x)
@@ -42,6 +43,11 @@ function start(){
             raw.appendChild(card)
         }    
         document.querySelector('.container').appendChild(raw)
+        let hide = document.getElementsByClassName('card')
+        for (let index = 0; index < hide.length; index++) {
+            const element = hide[index];
+            element.classList.add('hide')
+        }
     }
 }
 let currentCard = []
